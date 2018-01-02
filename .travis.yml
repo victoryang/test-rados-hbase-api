@@ -6,8 +6,6 @@ go:
   - 1.9.x
 before_install:
    - go get -t ./...
-   - godep save
-   - /bin/ls vendor/
 
 script: go build -o helloworld
 

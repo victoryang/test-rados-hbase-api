@@ -7,7 +7,7 @@ go:
 before_install:
    - go get -t ./...
    - godep save
-   - /bin/ls/vendor
+   - /bin/ls vendor/
 
 script: go build -o helloworld
 

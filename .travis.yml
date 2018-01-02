@@ -8,6 +8,7 @@ go:
 before_install:
   - sudo apt-get update
   - sudo apt-get install librados-dev
+  - sudo apt-get install libradosstriper-dev
 
 script: go build -o helloworld
 

@@ -6,9 +6,9 @@ go:
   - 1.9.x
 
 before_install:
-  - yum install -y epel-release
-  - rpm -ivh https://download.ceph.com/rpm-luminous/el7/noarch/ceph-release-1-1.el7.noarch.rpm
-  - yum install -y libradosstriper-devel
+  - wget -q -O- https://raw.github.com/ceph/ceph/master/keys/release.asc | sudo apt-key add -
+  - echo deb http://ceph.com/debian-testing/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
+  - echo deb http://eu.ceph.com/debian-testing/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
 
 script: go build -o helloworld
 

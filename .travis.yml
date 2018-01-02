@@ -6,10 +6,8 @@ go:
   - 1.9.x
 
 before_install:
-  - wget -q -O- https://raw.github.com/ceph/ceph/master/keys/release.asc | sudo apt-key add -
-  - echo deb http://ceph.com/debian-testing/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
-  - echo deb http://eu.ceph.com/debian-testing/ $(lsb_release -sc) main | sudo tee /etc/apt/sources.list.d/ceph.list
-  - sudo apt-get update && sudo apt-get install ceph
+  - sudo apt-get update
+  - sudo apt-get install librados-dev
 
 script: go build -o helloworld
 

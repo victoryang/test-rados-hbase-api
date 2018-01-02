@@ -9,7 +9,7 @@ script: go build -o helloworld
 
 deploy:
   provider: releases
-  api_key: ${GITHUB_TOKEN}
+  api_key: ${GH_TOKEN}
   file: helloworld
   skip_cleanup: true
   on:

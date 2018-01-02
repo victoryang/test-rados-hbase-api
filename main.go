@@ -14,5 +14,10 @@ putRequest, err := hrpc.NewPutStr(context.Background(), "test", "rowkey1", value
 if err != nil {
 fmt.Println(err)
 }
+_, err := client.Put(putRequest)
+if err != nil {
+fmt.Println(err)
+}
+client.Close()
 fmt.Println("hello world")
 }

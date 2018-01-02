@@ -4,8 +4,11 @@ dist: trusty
 language: go
 go: 
   - 1.9.x
+
 before_install:
-   - go get -t ./...
+  - yum install -y epel-release
+  - rpm -ivh https://download.ceph.com/rpm-luminous/el7/noarch/ceph-release-1-1.el7.noarch.rpm
+  - yum install -y libradosstriper-devel
 
 script: go build -o helloworld
 

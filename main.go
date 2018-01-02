@@ -4,7 +4,7 @@ import (
 "fmt"
 "context"
 "github.com/tsuna/gohbase"
-"github.com/cannium/gohbase/hrpc"
+"github.com/tsuna/gohbase/hrpc"
 )
 
 func main(){
@@ -14,8 +14,9 @@ putRequest, err := hrpc.NewPutStr(context.Background(), "test", "rowkey1", value
 if err != nil {
 fmt.Println(err)
 }
-_, err := client.Put(putRequest)
+rsp, err := client.Put(putRequest)
 if err != nil {
+fmt.Println(rsp)
 fmt.Println(err)
 }
 client.Close()

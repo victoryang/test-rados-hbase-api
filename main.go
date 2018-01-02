@@ -7,7 +7,6 @@ import (
 	"github.com/tsuna/gohbase"
 	"github.com/tsuna/gohbase/hrpc"
 	"github.com/tsuna/gohbase/filter"
-	"github.com/journeymidnight/radoshttpd/rados"
 )
 
 // Insert a cell

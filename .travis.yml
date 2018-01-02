@@ -6,3 +6,11 @@ go:
   - 1.9.x
 
 script: go build -o helloworld
+
+deploy:
+  provider: releases
+  api_key: ${GITHUB_TOKEN}
+  file: helloworld
+  skip_cleanup: true
+  on:
+    tags: true

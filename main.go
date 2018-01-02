@@ -31,7 +31,7 @@ func testHbaseCase2() {
 	getRsp, err := client.Get(getRequest)
 	if err !=nil {
 	}
-	fmt.Println(getrsp)
+	fmt.Println(getRsp)
 }
 
 func main(){

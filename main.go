@@ -93,7 +93,7 @@ func testHbaseCase5() {
 	scanRsp, err := scanner.Next()
 	if err != nil {
 	}
-	for _, cell := range scanRsp {
+	for _, cell := range scanRsp.Cells {
 		fmt.Println(string(cell.Row))
 		fmt.Println(string(cell.Family))
 		fmt.Println(string(cell.Qualifier))

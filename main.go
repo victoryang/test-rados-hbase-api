@@ -40,13 +40,13 @@ func testHbaseCase2() {
 		fmt.Println(string(cell.Qualifier))
 		fmt.Println(string(cell.Value))
 	}
-	client.Close()
+	//client.Close()
 }
 
 // Get a specific cell
 func testHbaseCase3() {
 	client := gohbase.NewClient("localhost")
-	family := map[string][]string{"cf1": []string{"col1"}}
+	family := map[string][]string{"cf1": []string{"col2"}}
 	getRequest, err := hrpc.NewGetStr(context.Background(), "test", "rowkey1", hrpc.Families(family))
 	if err != nil {
 	}
@@ -59,7 +59,7 @@ func testHbaseCase3() {
 		fmt.Println(string(cell.Qualifier))
 		fmt.Println(string(cell.Value))
 	}
-	client.Close()
+	//client.Close()
 }
 
 func main(){

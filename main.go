@@ -62,11 +62,52 @@ func testHbaseCase3() {
 	//client.Close()
 }
 
+// Get a specific cell with a filter
+func testHbaseCase5() {
+	client := gohbase.NewClient("localhost")
+	pFilter := filter.NewKeyOnlyFilter(true)
+	family := map[string][]string{"cf1": []string{"col1"}}
+	getRequest, err := hrpc.NewGetStr(context.Background(), "test", "rowkey1", hrpc.Families(family), hrpc.Filters(pFilter))
+	if err != nil {
+	}
+	getRsp, err := client.Get(getRequest)
+	if err != nil {
+	}
+	for _, cell := range getRsp.Cells {
+		fmt.Println(string(cell.Row))
+		fmt.Println(string(cell.Family))
+		fmt.Println(string(cell.Qualifier))
+		fmt.Println(string(cell.Value))
+	}
+}
+
+// Scan with filter
+func testHbaseCase5() {
+	client := gohbase.NewClient("localhost")
+	pFilter := filter.NewPrefixFilter([]byte("row"))
+	scanRequest, err := hrpc.NewScanStr(context.Background(), "test", hrpc.Filters(pFilter))
+	if err != nil {
+	}
+	scanRsp, err := client.Scan(scanRequest)
+	if err != nil {
+	}
+	for _, cell := range scanRsp.Cells {
+		fmt.Println(string(cell.Row))
+		fmt.Println(string(cell.Family))
+		fmt.Println(string(cell.Qualifier))
+		fmt.Println(string(cell.Value))
+	}
+}
+
 func main(){
 	testHbaseCase1()
 	time.Sleep(1)
 	testHbaseCase2()
 	time.Sleep(1)
 	testHbaseCase3()
+	time.Sleep(1)
+	testHbaseCase4()
+	time.Sleep(1)
+	testHbaseCase5()
 	fmt.Println("test finished, leaving...")
 }

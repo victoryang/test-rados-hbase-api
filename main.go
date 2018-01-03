@@ -32,8 +32,9 @@ func testHbaseCase2() {
 	if err !=nil {
 	}
 	//fmt.Println(getRsp)
-	for cell := range getRsp.Cells {
-		fmt.Println(string(cell))
+	for _, cell := range getRsp.Cells {
+		fmt.Println(string(cell.Row))
+		fmt.Println(string(cell.Family))
 	}
 }
 

@@ -6,6 +6,7 @@ import (
 	"time"
 	"github.com/tsuna/gohbase"
 	"github.com/tsuna/gohbase/hrpc"
+	"github.com/tsuna/gohbase/filter"
 )
 
 // Insert a cell
@@ -63,7 +64,7 @@ func testHbaseCase3() {
 }
 
 // Get a specific cell with a filter
-func testHbaseCase5() {
+func testHbaseCase4() {
 	client := gohbase.NewClient("localhost")
 	pFilter := filter.NewKeyOnlyFilter(true)
 	family := map[string][]string{"cf1": []string{"col1"}}
@@ -88,10 +89,11 @@ func testHbaseCase5() {
 	scanRequest, err := hrpc.NewScanStr(context.Background(), "test", hrpc.Filters(pFilter))
 	if err != nil {
 	}
-	scanRsp, err := client.Scan(scanRequest)
+	scanner := client.Scan(scanRequest)
+	scanRsp, err := scanner.Next()
 	if err != nil {
 	}
-	for _, cell := range scanRsp.Cells {
+	for _, cell := range scanRsp {
 		fmt.Println(string(cell.Row))
 		fmt.Println(string(cell.Family))
 		fmt.Println(string(cell.Qualifier))

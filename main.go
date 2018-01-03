@@ -35,6 +35,8 @@ func testHbaseCase2() {
 	for _, cell := range getRsp.Cells {
 		fmt.Println(string(cell.Row))
 		fmt.Println(string(cell.Family))
+		fmt.Println(string(cell.Qualifier))
+		fmt.Println(string(cell.Value))
 	}
 }
 

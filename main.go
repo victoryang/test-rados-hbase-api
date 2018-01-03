@@ -1,11 +1,11 @@
 package main
 
 import (
-"fmt"
-"context"
-"time"
-"github.com/tsuna/gohbase"
-"github.com/tsuna/gohbase/hrpc"
+	"fmt"
+	"context"
+	"time"
+	"github.com/tsuna/gohbase"
+	"github.com/tsuna/gohbase/hrpc"
 )
 
 func testHbaseCase1 () {
@@ -31,7 +31,10 @@ func testHbaseCase2() {
 	getRsp, err := client.Get(getRequest)
 	if err !=nil {
 	}
-	fmt.Println(getRsp)
+	//fmt.Println(getRsp)
+	for cell := range getRsp.Cells {
+		fmt.Println(string(cell))
+	}
 }
 
 func main(){
